@@ -1,0 +1,40 @@
+version: "3.7"
+
+portal:
+  image: ast_nginx:latest
+  hostname: portal
+  restart: always
+  ports:
+    - 80:80
+  volumes:
+    - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+  networks:
+    - ast_tomcat_cluster
+
+tomcat1:
+  image: ast_tomcat:latest
+  hostname: tomcat1
+  restart: always
+  # ports:
+  #   - 8881:8080
+  volumes:
+    - ./tomcat/server.xml:/usr/local/tomcat/conf/server.xml
+    - ./tomcat/tomcat-users.xml:/usr/local/tomcat/conf/tomcat-users.xml
+  networks:
+    - ast_tomcat_cluster
+
+tomcat2:
+  image: ast_tomcat:latest
+  hostname: tomcat2
+  restart: always
+  # ports:
+  #   - 8882:8080
+  volumes:
+    - ./tomcat/server.xml:/usr/local/tomcat/conf/server.xml
+    - ./tomcat/tomcat-users.xml:/usr/local/tomcat/conf/tomcat-users.xml
+  networks:
+    - ast_tomcat_cluster
+
+networks:
+  ast_tomcat_cluster:
+    driver: bridge
