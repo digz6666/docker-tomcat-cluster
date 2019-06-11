@@ -30,11 +30,11 @@ docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' ast
 docker images
 docker image inspect ast_nginx:latest --format='{{.Size}}'
 
-# backup container
+### backup container
 docker run --rm --volumes-from dbstore -v $(pwd):/backup ubuntu tar cvf /backup/backup.tar /dbdata
 
-# bash into container
+### bash into container
 docker exec -it ast-nginx-portal bash
 
-# get container logs
-docker logs some-mongo
+### get container logs
+docker logs ast-nginx-portal
