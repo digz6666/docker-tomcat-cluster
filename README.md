@@ -1,21 +1,28 @@
-# build image
-docker build -t ast_tomcat .
-docker build -t ast_nginx .
+### build image
+docker build -t ast_tomcat -f tomcat/Dockerfile .
+docker build -t ast_nginx -f nginx/Dockerfile .
 
-# run
+### run
 docker-compose up
 
-# list containers, images, volumes and networks
+### stop
+docker-compose down
+
+### list containers, images, volumes and networks
 docker container ls
 docker image ls
 docker volume ls
 docker network ls
 
-# info
+### info
 docker info
 
-# cleanup
+### cleanup
 docker system prune
 
-# get ip address of container
+### get ip address of container
 docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' ast-tomcat-cluster
+
+### get size of image
+docker images
+docker image inspect ast_nginx:latest --format='{{.Size}}'
