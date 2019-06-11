@@ -7,7 +7,7 @@ portal:
   ports:
     - 80:80
   volumes:
-    - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    - ./nginx/tomcat-cluster.conf:/etc/nginx/conf.d/tomcat-cluster.conf
   networks:
     - ast_tomcat_cluster
 
