@@ -5,6 +5,9 @@ docker build -t ast_nginx -f nginx/Dockerfile .
 ### run
 docker-compose up
 
+### run in background (detached mode)
+docker-compose up -d
+
 ### stop
 docker-compose down
 

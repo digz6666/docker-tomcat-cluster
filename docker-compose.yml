@@ -4,7 +4,7 @@ services:
   portal:
     container_name: ast-nginx-portal
     image: ast_nginx:latest
-    hostname: portal
+    hostname: ast-nginx-portal
     restart: always
     ports:
       - 80:80
@@ -16,7 +16,7 @@ services:
   tomcat1:
     container_name: ast-tomcat1
     image: ast_tomcat:latest
-    hostname: tomcat1
+    hostname: ast-tomcat1
     restart: always
     # ports:
     #   - 8881:8080
@@ -29,7 +29,7 @@ services:
   tomcat2:
     container_name: ast-tomcat2
     image: ast_tomcat:latest
-    hostname: tomcat2
+    hostname: ast-tomcat2
     restart: always
     # ports:
     #   - 8882:8080
