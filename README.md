@@ -30,11 +30,17 @@ docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' ast
 docker images
 docker image inspect ast_nginx:latest --format='{{.Size}}'
 
-# backup container
+### backup container
 docker run --rm --volumes-from dbstore -v $(pwd):/backup ubuntu tar cvf /backup/backup.tar /dbdata
 
-# bash into container
+### bash into container
 docker exec -it ast-nginx-portal bash
 
-# get container logs
+### get container logs
 docker logs some-mongo
+
+### get mounts of container
+docker inspect -f '{{ .Mounts }}' ast-tomcat1
+
+### copy file from container to host system
+docker cp <containerId>:/file/path/within/container /host/path/target

@@ -18,11 +18,13 @@ services:
     image: ast_tomcat:latest
     hostname: ast-tomcat1
     restart: always
-    # ports:
-    #   - 8881:8080
+    ports:
+      - 8881:8080
     volumes:
       - ./tomcat/server.xml:/usr/local/tomcat/conf/server.xml
       - ./tomcat/tomcat-users.xml:/usr/local/tomcat/conf/tomcat-users.xml
+      # - ./tomcat/context.xml:/usr/local/tomcat/webapps/manager/META-INF/context.xml
+      - ./tomcat/webapps:/usr/local/tomcat/webapps
     networks:
       - ast_tomcat_cluster
 
@@ -31,11 +33,13 @@ services:
     image: ast_tomcat:latest
     hostname: ast-tomcat2
     restart: always
-    # ports:
-    #   - 8882:8080
+    ports:
+      - 8882:8080
     volumes:
       - ./tomcat/server.xml:/usr/local/tomcat/conf/server.xml
       - ./tomcat/tomcat-users.xml:/usr/local/tomcat/conf/tomcat-users.xml
+      # - ./tomcat/context.xml:/usr/local/tomcat/webapps/manager/META-INF/context.xml
+      - ./tomcat/webapps:/usr/local/tomcat/webapps
     networks:
       - ast_tomcat_cluster
 
